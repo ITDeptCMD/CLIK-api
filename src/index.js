@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const dotenv = require("dotenv")
 const axios = require('axios');
 const cors = require('cors');
-const parser = require('fast-xml-parser');
-const xml2js = require('xml2js');
 const app = express()
 
 app.use(
