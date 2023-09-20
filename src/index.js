@@ -22,8 +22,9 @@ app.listen(PORT, ()=> {
     console.log("Express API running in port:" + PORT)
 })
 
-app.get("/api", (req, res) => {
-    res.send('Hello World')
+
+app.get("/", (req, res) => {
+  res.send('CLIK CapellaMultidana API')
 })
 
 app.get('/clik', (req, res) => {
