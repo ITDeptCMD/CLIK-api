@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const dotenv = require("dotenv")
 const axios = require('axios');
 const cors = require('cors');
-const parser = require('fast-xml-parser');
-const xml2js = require('xml2js');
 const app = express()
 
 app.use(
@@ -15,7 +13,7 @@ app.use(
 
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 2000;
 app.use(cors());
 
 app.listen(PORT, ()=> {
@@ -27,7 +25,7 @@ app.get("/api", (req, res) => {
 })
 
 app.get('/clik', (req, res) => {
-    axios.get('https://uat-a2a.cbclik.com/Service.svc?singleWsdl')
+    axios.get('https://a2a-cbsnusantara.cbclik.com/Service.svc?singleWsdl')
     .then(response => {
         res.type('application/xml');
         res.send(response.data);
@@ -40,10 +38,10 @@ app.get('/clik', (req, res) => {
 
 app.post('/clik', (req, res) => {
 const xmlData = req.body;
-axios.post('https://uat-a2a.cbclik.com/Service.svc?singleWsdl', xmlData, {
+axios.post('https://a2a-cbsnusantara.cbclik.com/Service.svc?singleWsdl', xmlData, {
     headers: {
     'Content-Type': 'text/xml',
-    'SOAPAction': 'https://uat-a2a.cbclik.com/Service.svc?singleWsdl/POST'
+    'SOAPAction': 'https://a2a-cbsnusantara.cbclik.com/Service.svc?singleWsdl/POST'
     },
 })
 .then(response => {
